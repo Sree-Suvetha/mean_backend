@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
         if(isValid){
             error = null;
         }
-        cb(error, path.join(__dirname, '../images')); // cb(detected error?, path to store files)
+        cb(error, path.join(__dirname, 'images')); // cb(detected error?, path to store files)
     },
      filename:(req, file, cb) =>{
         const name = file.originalname.toLowerCase().split(' ').join('-');
