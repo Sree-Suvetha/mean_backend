@@ -2,7 +2,7 @@ const Post = require('../models/post');
 
 exports.createPost = async (req, res)=>{
         try{
-            const url = req.protocol+'://'+req.get('host'); //construct a url to server
+            const url = 'https://'+req.get('host'); //construct a url to server
             const post = new Post({
                 title: req.body.title,
                 content: req.body.content,
@@ -44,7 +44,7 @@ exports.getSpecificPost = async(req, res)=>{
         res.status(200).json(post);
     }
     catch(err){
-        res.status(500).status({message:'Cannot get the post'});
+        res.status(500).json({message:'Cannot get the post'});
     }
 }
 
