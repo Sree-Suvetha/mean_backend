@@ -2,7 +2,7 @@ const Post = require('../models/post');
 
 exports.createPost = async (req, res)=>{
         try{
-            const protocol = req.protocol === 'http' && req.get('host').includes('onrender.com')? 'https': req.protocol;
+            const protocol = req.secure? 'https':'http';
             const url = protocol + '://' + req.get('host');
             //const url = 'https://'+req.get('host'); //construct a url to server
             const post = new Post({
@@ -73,7 +73,7 @@ exports.updatePost = async(req, res)=>{
         let imagePath = req.body.imagePath;
         if(req.file)
         {
-            const protocol = req.protocol === 'http' && req.get('host').includes('onrender.com')? 'https': req.protocol;
+            const protocol = req.secure? 'https':'http';
             const url = protocol + '://' + req.get('host');
             //const url = req.protocol+"://"+req.get('host');
             imagePath= url+ "/images/" + req.file.filename // direct access (domain+ folder+ name)
