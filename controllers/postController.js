@@ -2,6 +2,7 @@ const Post = require('../models/post');
 
 exports.createPost = async (req, res)=>{
         try{
+            console.log('SECURE?', req.secure, 'PROTOCOL:', req.protocol, 'HOST:', req.get('host'));
             const protocol = req.secure? 'https':'http';
             const url = protocol + '://' + req.get('host');
             //const url = 'https://'+req.get('host'); //construct a url to server
