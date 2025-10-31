@@ -9,6 +9,8 @@ dotenv.config();
 
 const app = express();
 
+app.enable('trust proxy');
+
 mongoose.connect(process.env.DatabaseUrl)
 .then(()=>console.log('connected to db'))
 .catch((err)=>{console.log(err)});
